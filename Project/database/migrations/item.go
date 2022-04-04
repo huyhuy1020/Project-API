@@ -1,9 +1,9 @@
-package db
+package database
 
 import (
 	"database/sql"
 
-	"gitlab.com/idoko/bucketeer/models"
+	"example.com/m/v2/models"
 )
 
 func (db Database) GetAllItems() (*models.ItemList, error) {

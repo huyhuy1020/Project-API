@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
-	"gitlab.com/idoko/bucketeer/db"
-	"gitlab.com/idoko/bucketeer/handler"
+	database "example.com/m/v2/database/migrations"
+	"example.com/m/v2/handler"
 )
 
 func main() {
@@ -21,11 +21,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error occurred: %s", err.Error())
 	}
-	dbUser, dbPassword, dbName :=
-		os.Getenv("POSTGRES_USER"),
-		os.Getenv("POSTGRES_PASSWORD"),
-		os.Getenv("POSTGRES_DB")
-	database, err := db.Initialize(dbUser, dbPassword, dbName)
+	// dbUser, dbPassword, dbName :=
+	// 	os.Getenv("POSTGRES_USER"),
+	// 	os.Getenv("POSTGRES_PASSWORD"),
+	// 	os.Getenv("POSTGRES_DB")
+	database, err := database.Initialize("postgres", "", "bucketeer_db")
 	if err != nil {
 		log.Fatalf("Could not set up database: %v", err)
 	}

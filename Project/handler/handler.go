@@ -3,14 +3,14 @@ package handler
 import (
 	"net/http"
 
+	database "example.com/m/v2/database/migrations"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/render"
-	"gitlab.com/idoko/bucketeer/db"
 )
 
-var dbInstance db.Database
+var dbInstance database.Database
 
-func NewHandler(db db.Database) http.Handler {
+func NewHandler(db database.Database) http.Handler {
 	router := chi.NewRouter()
 	dbInstance = db
 	router.MethodNotAllowed(methodNotAllowedHandler)
